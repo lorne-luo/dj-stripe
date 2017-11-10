@@ -1918,7 +1918,11 @@ class Invoice(StripeObject):
     period_start = StripeDateTimeField(
         help_text="Start of the usage period during which invoice items were added to this invoice."
     )
-    # TODO: receipt_number
+    receipt_number = StripeCharField(
+        max_length=32,
+        null=True,
+        help_text="The transaction number that appears on email receipts sent for this invoice."
+    )
     starting_balance = StripeIntegerField(
         help_text="Starting customer balance before attempting to pay invoice. If the invoice has not been attempted "
         "yet, this will be the current customer balance."
